@@ -28,17 +28,12 @@ class DictEntry(BaseModel):
 
 entries: list[DictEntry] = []
 
-def extractDictEntries():
-    entry_tree = root.findall("entry")
-    for i in range(50, 100):
+def extractDictEntries(xml_root: any, start: int = 0, stop: int = 0):
+    entry_tree = xml_root.findall("entry")
+    stop = stop if stop != 0 else len(entry_tree) 
+    for i in range(start, stop):
         entry = entry_tree[i]
         kele = entry.find("k_ele")
-        """ if(kele is not None):
-            print(str(kele))
-        
-            for keb in entry.find("k_ele"):
-                print(str(keb.text)) """
-        
         kele: list[str] = [str(keb.text) if keb is not None else "" for keb in entry.find("k_ele").findall("keb")] if entry.find("k_ele") is not None else []
         rele: list[str] = [str(reb.text) if reb is not None else "" for reb in entry.find("r_ele").findall("reb")] if entry.find("r_ele") is not None else []
        
@@ -52,7 +47,7 @@ def extractDictEntries():
         entry_obj = DictEntry(word_kanji=kele, word_kana=rele, senses=senses)
         entries.append(entry_obj)
 
-extractDictEntries()
+extractDictEntries(root)
 
 print("感じが印刷できるよ")
 json_str = json.dumps([entry.model_dump() for entry in entries], ensure_ascii=False, indent=4)
