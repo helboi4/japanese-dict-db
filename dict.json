@@ -1,0 +1,1043 @@
+[
+    {
+        "word_kanji": [
+            "如何にも"
+        ],
+        "word_kana": [
+            "いかにも"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "indeed",
+                    "really",
+                    "truly",
+                    "just (like)"
+                ],
+                "extra_info": "indicating emotive conviction"
+            },
+            {
+                "definitions": [
+                    "very",
+                    "extremely",
+                    "totally",
+                    "terribly"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "absolutely",
+                    "certainly",
+                    "for sure"
+                ],
+                "extra_info": "indicating agreement"
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "幾つも"
+        ],
+        "word_kana": [
+            "いくつも"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "many",
+                    "much",
+                    "plenty"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "hardly"
+                ],
+                "extra_info": "in neg. sentence"
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "行けない"
+        ],
+        "word_kana": [
+            "いけない"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "bad",
+                    "wrong",
+                    "naughty"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "must not (do, be)",
+                    "should not",
+                    "ought not to"
+                ],
+                "extra_info": "after the -te form of a verb or adjective"
+            },
+            {
+                "definitions": [
+                    "useless",
+                    "no good",
+                    "bad"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "hopeless",
+                    "beyond hope"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "unfortunate",
+                    "a shame",
+                    "a pity"
+                ],
+                "extra_info": "used to express sympathy"
+            },
+            {
+                "definitions": [
+                    "unable to drink (alcohol)"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "so as not to ...",
+                    "so that ... (won't)",
+                    "in case ...",
+                    "for fear that ...",
+                    "lest ..."
+                ],
+                "extra_info": "as ...(すると|しては)いけない(から|ので)"
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いごっそう"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "stubborn person",
+                    "strong-minded person",
+                    "obstinate person"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いざ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "now",
+                    "come (now)",
+                    "well"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いざこざ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "trouble",
+                    "quarrel",
+                    "difficulties",
+                    "complication",
+                    "tangle"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "イジイジ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "hesitantly",
+                    "timidly",
+                    "diffidently"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いじける"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to grow timid",
+                    "to cower",
+                    "to shrink",
+                    "to lose one's nerve"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "to become perverse",
+                    "to become contrary",
+                    "to become warped",
+                    "to become withdrawn"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "to be cramped",
+                    "to be constrained"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いじましい"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "piddling",
+                    "paltry"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いじらしい"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "lovable",
+                    "sweet",
+                    "charming"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "pitiful",
+                    "pathetic",
+                    "touching"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "いじり回す"
+        ],
+        "word_kana": [
+            "いじりまわす"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to tinker with",
+                    "to fumble with",
+                    "to fiddle with",
+                    "to twiddle"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いそいそ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "cheerfully",
+                    "joyously",
+                    "joyfully",
+                    "happily",
+                    "lightheartedly",
+                    "excitedly",
+                    "eagerly"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "イチャイチャ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "flirting",
+                    "making out"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いちゃつく"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to flirt with",
+                    "to dally"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "何時もより"
+        ],
+        "word_kana": [
+            "いつもより"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "more than usual"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "いとも簡単に"
+        ],
+        "word_kana": [
+            "いともかんたんに"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "very easily"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "鯔背"
+        ],
+        "word_kana": [
+            "いなせ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "gallant",
+                    "dashing",
+                    "smart"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "嘶く"
+        ],
+        "word_kana": [
+            "いななく"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to neigh"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "嘶き"
+        ],
+        "word_kana": [
+            "いななき"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "neigh",
+                    "whinny",
+                    "bray"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いびる"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to pick on",
+                    "to tease"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "嫌に"
+        ],
+        "word_kana": [
+            "いやに"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "awfully",
+                    "terribly"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いらっしゃい"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "come",
+                    "go",
+                    "stay"
+                ],
+                "extra_info": "used as a polite imperative"
+            },
+            {
+                "definitions": [
+                    "welcome"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いらっしゃいませ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "welcome"
+                ],
+                "extra_info": "used in shops, restaurants, etc."
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "いらっしゃる"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to come",
+                    "to go",
+                    "to be (somewhere)"
+                ],
+                "extra_info": "sometimes erroneously written 居らっしゃる"
+            },
+            {
+                "definitions": [
+                    "to be (doing)"
+                ],
+                "extra_info": "after a -te form, or the particle \"de\""
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うじうじ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "indecisively",
+                    "hesitantly",
+                    "irresolutely",
+                    "wishy-washily"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うじゃうじゃ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "in swarms",
+                    "in clusters"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "tediously",
+                    "slowly"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うずうず"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "itching to do something",
+                    "impatient",
+                    "sorely tempted",
+                    "eager"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うぞうぞ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "irrepressibly aroused (esp. sexually)",
+                    "stimulated"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うだうだ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "going on and on (about inconsequential things)",
+                    "talking nonsense"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "idling away the time",
+                    "dawdling"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うっかり"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "carelessly",
+                    "thoughtlessly",
+                    "inadvertently"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うとうと"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "falling into a doze",
+                    "dozing off",
+                    "nodding off"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うねうね"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "winding",
+                    "meandering",
+                    "zigzagging",
+                    "zig-zag",
+                    "in twists and turns",
+                    "sinuously",
+                    "tortuously"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "畝り"
+        ],
+        "word_kana": [
+            "うねり"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "undulation",
+                    "winding",
+                    "meandering"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "swell (of waves)",
+                    "ground swell",
+                    "surge",
+                    "billow",
+                    "roller"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うろうろ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "restlessly",
+                    "aimlessly",
+                    "without purpose"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "to loiter",
+                    "to drift",
+                    "to hang about doing nothing",
+                    "to wander aimlessly",
+                    "to be restless"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "to be restless",
+                    "to fuss",
+                    "to be in a fidget"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "狼狽える"
+        ],
+        "word_kana": [
+            "うろたえる"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to be flustered",
+                    "to lose one's presence of mind"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うん"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "yes",
+                    "yeah",
+                    "uh huh"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "hum",
+                    "hmmm",
+                    "well",
+                    "erm",
+                    "huh?"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "oof"
+                ],
+                "extra_info": "moan or groan (of pain)"
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うんこ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "poop",
+                    "poo",
+                    "faeces",
+                    "feces"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "crap",
+                    "trash",
+                    "garbage"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うんざり"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "tedious",
+                    "boring",
+                    "being fed up with"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "うんち"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "poo",
+                    "poop",
+                    "doo-doo",
+                    "caca",
+                    "whoopsie"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "鱝"
+        ],
+        "word_kana": [
+            "えい"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "ray (any fish of superorder Batoidea)"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "ええ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "yes",
+                    "that is correct",
+                    "right"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "um",
+                    "errr"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "huh?"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "grrr",
+                    "gah",
+                    "Must I?"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "good"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "えっと"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "let me see",
+                    "well",
+                    "errr ...",
+                    "uhh ..."
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "えげつない"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "dirty",
+                    "vulgar",
+                    "nasty"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "斉魚"
+        ],
+        "word_kana": [
+            "えつ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "Japanese grenadier anchovy (Coilia nasus)"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "お出でになる"
+        ],
+        "word_kana": [
+            "おいでになる"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "to be"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "to come"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "to go"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "おいでやす"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "welcome (in shops, etc.)"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "おい"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "hey!",
+                    "say!",
+                    "I say!",
+                    "come on!",
+                    "look!",
+                    "oi!"
+                ],
+                "extra_info": null
+            },
+            {
+                "definitions": [
+                    "I",
+                    "me"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "おけさ"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "style of Japanese folk song associated with Niigata Prefecture"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [
+            "おけさ節"
+        ],
+        "word_kana": [
+            "おけさぶし"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "style of Japanese folk song associated with Niigata Prefecture"
+                ],
+                "extra_info": null
+            }
+        ]
+    },
+    {
+        "word_kanji": [],
+        "word_kana": [
+            "おこしやす"
+        ],
+        "senses": [
+            {
+                "definitions": [
+                    "welcome!"
+                ],
+                "extra_info": "used to greet customers"
+            }
+        ]
+    }
+]
