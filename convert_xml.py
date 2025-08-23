@@ -1,8 +1,20 @@
 import xml.etree.ElementTree as ET
+import logging
+import psycopg
 import os
 import json
 from pydantic import BaseModel
 
+db_settings = {
+    "host" : "localhost",
+    "database" : "dictionary",
+    "user" : "postgres",
+    "port" : 5432,
+    "connect_timeout": 10
+}
+
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s %(message)s")
+logging.getLogger("psycopg").setLevel(logging.DEBUG)
 tree = ET.parse('JMdict.xml')
 root = tree.getroot()
 
@@ -26,9 +38,9 @@ class DictEntry(BaseModel):
     def __str__(self):
         return f"{{word_kanji: {self.word_kanji}, \n word_kana: {self.word_kana}, \n senses: {str(self.senses)}}}"
 
-entries: list[DictEntry] = []
-
-def extractDictEntries(xml_root: any, start: int = 0, stop: int = 0):
+#turn xml into a list of useful python objects with more coherent names for manipulation
+def extract_dict_entries(xml_root: any, start: int = 0, stop: int = 0) -> list[DictEntry]:
+    entries: list[DictEntry] = []
     entry_tree = xml_root.findall("entry")
     stop = stop if stop != 0 else len(entry_tree) 
     for i in range(start, stop):
@@ -46,10 +58,50 @@ def extractDictEntries(xml_root: any, start: int = 0, stop: int = 0):
 
         entry_obj = DictEntry(word_kanji=kele, word_kana=rele, senses=senses)
         entries.append(entry_obj)
+    return entries    
 
-extractDictEntries(root)
+# pretty much only here to test extract_dict_entries
+def write_entries_to_json(entries: list[DictEntry]) -> None:
+    json_str = json.dumps([entry.model_dump() for entry in entries], ensure_ascii=False, indent=4)
+    with open("dict.json", "w") as f:
+        f.write(json_str)
 
-print("感じが印刷できるよ")
-json_str = json.dumps([entry.model_dump() for entry in entries], ensure_ascii=False, indent=4)
-with open("dict.json", "w") as f:
-    f.write(json_str)
+def write_to_db(entries: list[DictEntry]) -> bool :
+    with psycopg.connect(**db_settings) as con:
+        with con.cursor() as cur:
+            cur.execute("""
+                DROP TABLE IF EXISTS entries
+            """)
+            cur.execute("""
+                CREATE TABLE entries(
+                   id SERIAL PRIMARY KEY,
+                   word_kanji VARCHAR(255)[],
+                   word_kana VARCHAR(255)[],
+                );
+            """)
+            cur.execute("""
+                CREATE TABLE senses(
+                    id SERIAL PRIMARY KEY,
+                    definitions TEXT[],
+                    extra_info TEXT,
+                    entry_id INT NOT NULL,
+                    CONSTRAINT fk_entry_id
+                        FOREIGN KEY (entry_id)
+                        REFERENCES entries(id)
+                );
+            """)
+
+            for entry in entries:
+                cur.execute("""
+                    INSERT INTO entries (word_kanji, word_kana) VALUES (%s, %s)
+                    RETURNING id;
+                """, (entry.word_kanji, entry.word_kana))
+                result = cur.fetchone()
+                entry_id = result[0] if result else None
+                if entry_id is not None:
+                    for sense in entry.senses:
+                        cur.execute("INSERT INTO senses (definitions, extra_info, entry_id) VALUES (%s, %s, %s)", (sense.definitions, sense.extra_info, entry_id))
+
+entries = extract_dict_entries(root)
+
+
