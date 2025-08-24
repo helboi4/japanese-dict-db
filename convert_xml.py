@@ -15,6 +15,7 @@ db_settings = {
 
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s %(message)s")
 logging.getLogger("psycopg").setLevel(logging.DEBUG)
+log = logging.getLogger(__name__)
 tree = ET.parse('JMdict.xml')
 root = tree.getroot()
 
@@ -67,41 +68,64 @@ def write_entries_to_json(entries: list[DictEntry]) -> None:
         f.write(json_str)
 
 def write_to_db(entries: list[DictEntry]) -> bool :
-    with psycopg.connect(**db_settings) as con:
+    try:
+        with psycopg.connect(**db_settings) as con:
+            try:
+                with con.cursor() as cur:
+                    cur.execute("""
+                        DROP TABLE IF EXISTS entries
+                    """)
+                    cur.execute("""
+                        CREATE TABLE entries(
+                           id SERIAL PRIMARY KEY,
+                           word_kanji VARCHAR(255)[],
+                           word_kana VARCHAR(255)[],
+                        );
+                    """)
+                    cur.execute("""
+                        CREATE TABLE senses(
+                            id SERIAL PRIMARY KEY,
+                            definitions TEXT[],
+                            extra_info TEXT,
+                            entry_id INT NOT NULL,
+                            CONSTRAINT fk_entry_id
+                                FOREIGN KEY (entry_id)
+                                REFERENCES entries(id)
+                        );
+                    """)
+            except psycopg.OperationalError as e:
+                log.error(f"Unable to create tables: {str(e)}")
+                return False
         with con.cursor() as cur:
-            cur.execute("""
-                DROP TABLE IF EXISTS entries
-            """)
-            cur.execute("""
-                CREATE TABLE entries(
-                   id SERIAL PRIMARY KEY,
-                   word_kanji VARCHAR(255)[],
-                   word_kana VARCHAR(255)[],
-                );
-            """)
-            cur.execute("""
-                CREATE TABLE senses(
-                    id SERIAL PRIMARY KEY,
-                    definitions TEXT[],
-                    extra_info TEXT,
-                    entry_id INT NOT NULL,
-                    CONSTRAINT fk_entry_id
-                        FOREIGN KEY (entry_id)
-                        REFERENCES entries(id)
-                );
-            """)
-
+            success_count = 0
             for entry in entries:
-                cur.execute("""
-                    INSERT INTO entries (word_kanji, word_kana) VALUES (%s, %s)
-                    RETURNING id;
-                """, (entry.word_kanji, entry.word_kana))
-                result = cur.fetchone()
-                entry_id = result[0] if result else None
-                if entry_id is not None:
-                    for sense in entry.senses:
-                        cur.execute("INSERT INTO senses (definitions, extra_info, entry_id) VALUES (%s, %s, %s)", (sense.definitions, sense.extra_info, entry_id))
+                savepoint_name = success_count
+                savepoint_name = f"entry_{success_count}"
+                try:
+                    cur.execute("SAVEPOINT %s", savepoint_name)
+                    cur.execute("""
+                        INSERT INTO entries (word_kanji, word_kana) VALUES (%s, %s)
+                        RETURNING id;
+                    """, (entry.word_kanji, entry.word_kana))
+                    result = cur.fetchone()
+                    entry_id = result[0] if result else None
+                    if entry_id is not None:
+                        for sense in entry.senses:
+                            cur.execute("INSERT INTO senses (definitions, extra_info, entry_id) VALUES (%s, %s, %s)", (sense.definitions, sense.extra_info, entry_id))
+                    cur.execute("RELEASE SAVEPOINT %s", savepoint_name)
+                    success_count += 1
+                except (psycopg.DataError, psycopg.IntegrityError) as e:
+                    log.debug(f"Entry {entry.word_kanji}, {entry.word_kana} not inserted: {str(e)}")
+                    cur.execute("ROLLBACK TO SAVEPOINT %s", savepoint_name)
+                    pass
+            con.commit()
+    except psycopg.OperationalError as e:
+        log.error(f"Unable to establish db connection: {str(e)}")
+        return False
+    return True
 
-entries = extract_dict_entries(root)
+if __name__ == "__main__":
+    entries = extract_dict_entries(root)
+    success: bool = 
 
 
