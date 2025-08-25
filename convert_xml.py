@@ -122,6 +122,12 @@ def write_to_db(entries: list[DictEntry]) -> bool :
                                 REFERENCES entries(id)
                         );
                     """)
+                    cur.execute("""
+                        CREATE INDEX idx_entries_kanji ON entries USING GIN (word_kanji);
+                    """)
+                    cur.execute("""
+                        CREATE INDEX idx_entries_kana ON entries USING GIN (word_kana);
+                    """)
                     log.info("Tables created successfully")
             except (psycopg.OperationalError, psycopg.ProgrammingError, TypeError) as e:
                 log.error(f"Unable to create tables: {str(e)}")
