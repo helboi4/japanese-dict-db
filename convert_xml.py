@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import sys
 import logging
 import psycopg
 import os
@@ -24,6 +25,20 @@ root = tree.getroot()
 # gloss is the meaning of the word (can be multiple)
 # s_inf is further context about the word (optional)
 
+class FailedExtractionException(Exception):
+    def __init__(self):
+        super()
+
+    def __str__(self):
+        return "Could not extract any entries from xml"
+
+class BadXmlException(Exception):
+    def __init__(self):
+        super()
+
+    def __str__(self):
+        return "XML file is corrupted. Could not begin extraction"
+
 class Sense(BaseModel):
     definitions: list[str]
     extra_info: str | None
@@ -41,15 +56,22 @@ class DictEntry(BaseModel):
 
 #turn xml into a list of useful python objects with more coherent names for manipulation
 def extract_dict_entries(xml_root: any, start: int = 0, stop: int = 0) -> list[DictEntry]:
+    if xml_root is None:
+        log.error(str(BadXmlException))
+        raise BadXmlException
     entries: list[DictEntry] = []
     entry_tree = xml_root.findall("entry")
+    if entry_tree == [] or entry_tree is None:
+        log.error("Could not find any entries in xml")
+        raise BadXmlException
     stop = stop if stop != 0 else len(entry_tree) 
     for i in range(start, stop):
         entry = entry_tree[i]
-        kele = entry.find("k_ele")
         kele: list[str] = [str(keb.text) if keb is not None else "" for keb in entry.find("k_ele").findall("keb")] if entry.find("k_ele") is not None else []
-        rele: list[str] = [str(reb.text) if reb is not None else "" for reb in entry.find("r_ele").findall("reb")] if entry.find("r_ele") is not None else []
-       
+        rele: list[str] = [str(reb.text) if reb is not None else "" for reb in entry.find("r_ele").findall("reb")] if entry.find("r_ele") is not None else [] 
+        if kele == [] and rele == []:
+            log.debug("Could not find information for entry no. %s", i)
+            pass
         senses: list[Sense] = []
         for sense in entry.findall("sense"):
             gloss_list: list[str] = [str(gloss.text) if gloss is not None else "" for gloss in sense.findall("gloss")]
@@ -59,6 +81,9 @@ def extract_dict_entries(xml_root: any, start: int = 0, stop: int = 0) -> list[D
 
         entry_obj = DictEntry(word_kanji=kele, word_kana=rele, senses=senses)
         entries.append(entry_obj)
+    if entries == []:
+        log.debug(str(FailedExtractionException))
+        raise FailedExtractionException
     return entries    
 
 # pretty much only here to test extract_dict_entries
@@ -125,7 +150,13 @@ def write_to_db(entries: list[DictEntry]) -> bool :
     return True
 
 if __name__ == "__main__":
-    entries = extract_dict_entries(root)
-    success: bool = 
-
-
+    try:
+        entries = extract_dict_entries(root)
+    except (BadXmlException):
+        log.error("Aborting due to bad xml")
+        sys.exit(1)
+    db_write_success: bool = write_to_db(entries)
+    if not db_write_success:
+        log.error("Fialed to write entries to db. Aborting")
+    else:
+        log.info("Sucessfully wrote entries to db. Use dictreader user to read postgres db")
