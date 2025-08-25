@@ -106,9 +106,9 @@ def write_to_db(entries: list[DictEntry]) -> bool :
                     """)
                     cur.execute("""
                         CREATE TABLE entries(
-                           id SERIAL PRIMARY KEY,
-                           word_kanji VARCHAR(255)[],
-                           word_kana VARCHAR(255)[]
+                           id INT PRIMARY KEY,
+                           word_kanji TEXT[],
+                           word_kana TEXT[]
                         );
                     """)
                     cur.execute("""
@@ -127,28 +127,20 @@ def write_to_db(entries: list[DictEntry]) -> bool :
                 log.error(f"Unable to create tables: {str(e)}")
                 return False
             with con.cursor() as cur:
-                success_count = 0
-                for entry in entries:
-                    savepoint_name = success_count
-                    savepoint_name = f"entry_{success_count}"
-                    try:
-                        cur.execute(f"SAVEPOINT {savepoint_name}")
-                        cur.execute("""
-                            INSERT INTO entries (word_kanji, word_kana) VALUES (%s, %s)
-                            RETURNING id;
-                        """, (entry.word_kanji, entry.word_kana))
-                        result = cur.fetchone()
-                        entry_id = result[0] if result else None
-                        if entry_id is not None:
-                            for sense in entry.senses:
-                                cur.execute("INSERT INTO senses (definitions, extra_info, entry_id) VALUES (%s, %s, %s)", (sense.definitions, sense.extra_info, entry_id))
-                        cur.execute(f"RELEASE SAVEPOINT {savepoint_name}")
-                        success_count += 1
-                        log.info(f"Sucessfully added entry for {entry.word_kanji}, {entry.word_kana}. Current success count: {success_count} ")
-                    except (psycopg.DataError, psycopg.IntegrityError, psycopg.ProgrammingError, TypeError) as e:
-                        log.debug(f"Entry {entry.word_kanji}, {entry.word_kana} not inserted: {str(e)}")
-                        cur.execute(f"ROLLBACK TO SAVEPOINT {savepoint_name}")
-                        pass
+                entries_data = []
+                senses_data = []
+                i = 1
+                for entry in entries:  # Start from 1
+                    entries_data.append((i, entry.word_kanji, entry.word_kana))
+                    for sense in entry.senses:
+                        senses_data.append((sense.definitions, sense.extra_info, i))
+                    i += 1
+                try:
+                    cur.executemany("INSERT INTO entries (id, word_kanji, word_kana) VALUES (%s, %s, %s)", entries_data)
+                    cur.executemany("INSERT INTO senses (definitions, extra_info, entry_id) VALUES (%s, %s, %s)", senses_data)
+                except (psycopg.DataError, psycopg.IntegrityError, psycopg.ProgrammingError, TypeError) as e:
+                    log.debug(f"Entry insertion failed: {str(e)}")
+                    return False
             con.commit()
     except psycopg.OperationalError as e:
         log.error(f"Unable to establish db connection: {str(e)}")
@@ -161,8 +153,11 @@ if __name__ == "__main__":
     except (BadXmlException):
         log.error("Aborting due to bad xml")
         sys.exit(1)
+    except (FailedExtractionException):
+        log.error("Aborting due to failure to extract data from xml")
+        sys.exit(1)
     db_write_success: bool = write_to_db(entries)
     if not db_write_success:
-        log.error("Fialed to write entries to db. Aborting")
+        log.error("Failed to write entries to db. Aborting")
     else:
-        log.info("Sucessfully wrote entries to db. Use dictreader user to read postgres db")
+        log.info("Sucessfully wrote entries to db.")
