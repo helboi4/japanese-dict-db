@@ -22,11 +22,6 @@ SET row_security = off;
 -- Name: dictionary; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE dictionary WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'en_GB.UTF-8';
-
-
-ALTER DATABASE dictionary OWNER TO postgres;
-
 \unrestrict 2VIMR0YNoSeuObfyYdMqFgb5cxcdmktj9HnBiLMtQMx5xp1BkJqzFtzFLSdWIkM
 \connect dictionary
 \restrict 2VIMR0YNoSeuObfyYdMqFgb5cxcdmktj9HnBiLMtQMx5xp1BkJqzFtzFLSdWIkM
