@@ -1,4 +1,4 @@
-FROM postgres:17.6
+FROM postgres:16.10
 
 COPY dictionary_dump.sql /docker-entrypoint-initdb.d/
 
