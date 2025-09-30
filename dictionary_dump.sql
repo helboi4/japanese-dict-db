@@ -429312,9 +429312,6 @@ ALTER TABLE ONLY public.senses
 -- Name: DATABASE dictionary; Type: ACL; Schema: -; Owner: postgres
 --
 
-GRANT CONNECT ON DATABASE dictionary TO dictreader;
-
-
 --
 -- PostgreSQL database dump complete
 --
